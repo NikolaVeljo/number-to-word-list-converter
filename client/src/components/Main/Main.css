@@ -1,0 +1,141 @@
+.mobile{
+    width: 37.5rem;
+    height: 78.5rem;
+    border: 10px solid black;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    margin: 10px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:  "screen-wrapper"
+                          "keyboard";
+    font-family: "Segoe UI", "San Francisco", monospace;
+}
+
+.screen-wrapper{
+    height: 100%;
+    padding: 2rem;
+    font-size: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    grid-area: screen-wrapper;
+}
+
+.keyboard-wrapper{
+    height: 42rem;
+    display: inline-grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr; 
+    grid-template-areas: 
+      "keyboard-input-wrapper keyboard-input-wrapper keyboard-input-wrapper"
+      ". . ."
+      ". . ."
+      ". . ."
+      ". number-zero .";
+    border-top: 1px solid #8e8e8e;
+    grid-area: keyboard;
+}
+
+input:focus{
+    outline:none;
+}
+
+.keyboard-wrapper{
+    width: 100%;
+    background-color: #d1d5db;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+
+.keyboard-input-wrapper{
+    grid-area: keyboard-input-wrapper;
+    display: flex;
+}
+
+.keyboard-input{
+    width: 100%;
+    border:none;
+    font-size: 2rem;
+    padding-left: 5px;
+}
+
+.button{
+    border:none;
+    width: 30%;
+    height: 100%;
+    font-size: 2rem;
+}
+
+
+.button:active,
+.active{
+    background-color: #d1d5db;
+    font-size: 1.7rem;
+}
+
+.single-key-wrapper-0{
+    grid-area: number-zero;
+    border-right: 1px solid #ccc;
+    margin-right: -1px;
+}
+
+.single-key-wrapper-7{
+    border-bottom: 1px solid #ccc;
+}
+
+.single-key-wrapper-9{
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+
+.single-key-wrapper-3{
+    border-right: 1px solid #ccc;
+}
+
+.single-key-wrapper-6{
+    border-right: 1px solid #ccc;
+}
+
+.single-key-number{
+    font-size: 2rem !important;
+    font-weight: 900;
+    margin-bottom: 5px;
+}
+
+.single-key-letters {
+    height: 1.3rem;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+}
+
+/* Helpers  */
+.flex-align {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border-bottom: 1px solid #CCC; 
+    border-left: 1px solid #ccc;
+    background-color: #F7F7F7;
+}
+
+.enable-cursor:hover {
+    cursor: url("../../img/touch-cursor.png") 8 8, auto !important;
+}
+
+.active-color:active{
+    background-color: #d1d5db;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.disable-select {
+    user-select: none;
+   -webkit-user-select: none; 
+   -khtml-user-select: none; 
+   -ms-user-select: none; 
+} 
