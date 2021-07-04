@@ -1,0 +1,22 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "number-to-word-list-converter server side",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "mocha"
+  },
+  "author": "Nikola Veljovic",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.9"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "chai-http": "^4.3.0",
+    "mocha": "*"
+  },
+  "//": "mocha is our preference, but you can use any test runner you like"
+}
