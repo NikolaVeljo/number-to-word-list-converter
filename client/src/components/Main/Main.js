@@ -35,8 +35,8 @@ const Main = () => {
             setMessage( message );
                 
         } catch ( e ) {
-            setResult( e.response.data.words );
-            setMessage( e.response.data.message );
+            e.response ? setResult( e.response.data.words ) : setResult([]);
+            e.response ? setMessage( e.response.data.message ) : setMessage( e.message ) 
         }
     }
 
