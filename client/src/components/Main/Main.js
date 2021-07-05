@@ -1,11 +1,16 @@
 import React, { Fragment, useState, useEffect }  from 'react';
-import './Main.css'
+import axios from 'axios';
+import './Main.css';
+import CustomKey from '../CustomKey/CustomKey';
+import Results from '../Results/Results';
 
 
 const Main = () => {
     
     const [ numbers , setNumbers ] = useState([]);
-    
+    const [ result , setResult ] = useState([]);
+    const [ message , setMessage ] = useState([]);
+
     const keyboard = [
         /* 0 */ [''],
         /* 1 */ [''],
@@ -17,19 +22,37 @@ const Main = () => {
         /* 7 */ ['p', 'q', 'r', 's'],
         /* 8 */ ['t', 'u', 'v'],
         /* 9 */ ['w', 'x', 'y', 'z'],
-      ];
+    ];
 
-    const handleNumbersClicked = (number) => {
-        setNumbers(prevState => [...prevState , number] );
+    const postNumbers = async ( numbers )=> {
+
+        try {
+
+            const response  = await axios.post(`http://localhost:8888/api/post-numbers`,  { numbers } );                    
+            const { words , message } = response.data;
+                
+            setResult( words );
+            setMessage( message );
+                
+        } catch ( e ) {
+            setResult( e.response.data.words );
+            setMessage( e.response.data.message );
+        }
+    }
+
+    const handleNumbersClicked = ( number ) => {
+        setNumbers( prevState => [ ...prevState , number ] );
     }
 
     const handleNumberDelete = () => {
-        setNumbers( prevState => prevState.filter( ( _ , index) => index !== prevState.length - 1 ) );
+        setNumbers( prevState => prevState.filter( ( _ , index ) => index !== prevState.length - 1 ) );
     }
 
     useEffect(() => {
 
-        document.querySelector('.keyboard-input').value = [numbers.join('')];
+        document.querySelector( '.keyboard-input' ).value = [numbers.join('')];
+        const timeout = setTimeout(() =>  postNumbers( numbers.join('')), 500 );
+        return () => { clearTimeout(timeout); };
 
     },[numbers]);
 
@@ -40,7 +63,7 @@ const Main = () => {
             <div className='mobile enable-cursor' >
                 
                 <div className='screen-wrapper'>
-                    <div> Output from API call : {numbers.join('')} </div>
+                    <Results result={result} message={message}/>
                 </div>
 
                 <div className='keyboard-wrapper'>
@@ -50,8 +73,7 @@ const Main = () => {
                     </div>
 
                     {keyboard.length && keyboard.map(  ( singleKey, index ) => <div className={`single-key-wrapper-${index} flex-align active-color disable-select`} key={index} onClick={() => handleNumbersClicked(index)} >
-                            <div  className='single-key-number'> {index} </div>
-                            <div className='single-key-letters'> {singleKey.join('')}</div>
+                            <CustomKey number={index} letters={singleKey} />
                     </div>) }
                 </div>
 

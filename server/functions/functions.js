@@ -6,11 +6,13 @@ const validateReceivedValue = ( input ) => {
         return new Error( `Numbers 0 and 1 don't have letters choose another!` );
     }
 
+    if(input.length <= 1){
+      return new Error( 'You must provide more than one number!' );
+    }
+
     let number = Number( input );
 
-    if(number.length <= 1){
-        return new Error( 'You must provide more than one number!' );
-    }
+   
 
     if( Math.sign( number ) === -1 ){
         return new Error( 'Must provide a positive number!' );

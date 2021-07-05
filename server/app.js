@@ -1,9 +1,13 @@
 const express = require('express');
+const cors = require('cors');
+
 const { router } = require('./routes/numbers');
 
 const PORT = 8888;
 
 const app = express();
+
+app.use(cors());
 
 app.use( express.json() );
 

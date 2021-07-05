@@ -1,5 +1,5 @@
 .mobile{
-    width: 37.5rem;
+    width: 38.5rem;
     height: 78.5rem;
     border: 10px solid black;
     border-radius: 30px;
@@ -16,12 +16,15 @@
 }
 
 .screen-wrapper{
-    height: 100%;
     padding: 2rem;
     font-size: 1.6rem;
     display: flex;
     flex-direction: column;
     grid-area: screen-wrapper;
+    overflow: auto;
+    margin-top: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
 .keyboard-wrapper{
@@ -74,41 +77,6 @@ input:focus{
 .active{
     background-color: #d1d5db;
     font-size: 1.7rem;
-}
-
-.single-key-wrapper-0{
-    grid-area: number-zero;
-    border-right: 1px solid #ccc;
-    margin-right: -1px;
-}
-
-.single-key-wrapper-7{
-    border-bottom: 1px solid #ccc;
-}
-
-.single-key-wrapper-9{
-    border-bottom: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-}
-
-.single-key-wrapper-3{
-    border-right: 1px solid #ccc;
-}
-
-.single-key-wrapper-6{
-    border-right: 1px solid #ccc;
-}
-
-.single-key-number{
-    font-size: 2rem !important;
-    font-weight: 900;
-    margin-bottom: 5px;
-}
-
-.single-key-letters {
-    height: 1.3rem;
-    font-size: 1.3rem;
-    text-transform: uppercase;
 }
 
 /* Helpers  */
